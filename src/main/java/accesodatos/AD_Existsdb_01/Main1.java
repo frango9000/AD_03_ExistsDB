@@ -143,9 +143,11 @@ result= servicio.query(cons);
  */
 package accesodatos.AD_Existsdb_01;
 
+import accesodatos.misc.SessionXML;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.util.Arrays;
+import org.hsqldb.Session;
 import org.xmldb.api.DatabaseManager;
 import org.xmldb.api.base.Collection;
 import org.xmldb.api.base.Database;
@@ -160,24 +162,11 @@ import org.xmldb.api.modules.XPathQueryService;
  * Hello world!
  */
 public class Main1 {
-
-    public static String driver = "org.exist.xmldb.DatabaseImpl";
-    public static String user = "admin";
-    public static String pass = "castelao";
-
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        Class<?> cl = null;
+        SessionXML sessionXML = SessionXML.getSessionXML();
         try {
-            //3 Conectarse a exists
-            cl = Class.forName(driver);
-            Database database = (Database) cl.newInstance();
-            DatabaseManager.registerDatabase(database);
-            String coleccion = "/db";
-            Collection col;
-            String uri = "xmldb:exist://10.0.9.146:8080/exist/xmlrpc";
-            col = DatabaseManager.getCollection(uri + coleccion, user, pass);
-            System.out.println((col.listResources().length));
+            //3 Conectarse a exists (root col)
+            Collection col = sessionXML.getCollection("");
 
             CollectionManagementService mgtService = (CollectionManagementService) col.getService("CollectionManagementService", "1.0");
 
@@ -204,8 +193,8 @@ public class Main1 {
             cols = col.listChildCollections();
             System.out.println(Arrays.toString(cols));
 
-            //obj collectiion que vamos a utilizar
-            Collection testcol = DatabaseManager.getCollection(uri + coleccion + "/test", user, pass);
+            //conexion a colection test
+            Collection testcol = sessionXML.getCollection("test");
 
             File empleadosxml = new File(Main1.class.getResource("/xml/empleados.xml").toURI());
             File proba1xml = new File(Main1.class.getResource("/xml/proba.xml").toURI());
@@ -220,7 +209,7 @@ public class Main1 {
             cols = testcol.listResources();
             System.out.println(Arrays.toString(cols));
 
-            //pruba de creacion y eliminacion de un recurso
+            //pruba de creacion y eliminacion de un recurso proba.xml
             Resource proba0x = testcol.createResource(proba1xml.getName(), "XMLResource");
             proba0x.setContent(proba1xml);
             testcol.storeResource(proba0x);
@@ -230,6 +219,11 @@ public class Main1 {
             //buscamos el recurso en la db y lo eliminamos
             Resource aborrar = testcol.getResource(proba1xml.getName());
             testcol.removeResource(aborrar);
+
+            //creacion de recurso proba2.xml
+            Resource proba2x = testcol.createResource(proba2xml.getName(), "XMLResource");
+            proba2x.setContent(proba2xml);
+            testcol.storeResource(proba2x);
 
             //nuevamente verificamos que las acciones previas se realizaron correctamente
             cols = testcol.listResources();
@@ -283,11 +277,8 @@ public class Main1 {
             //11
             String delete2 = "update delete /empleados/zonas/zona[cod_zona=50]";
             service.query(delete2);
-
-        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | XMLDBException | URISyntaxException e) {
+        } catch (XMLDBException | URISyntaxException e) {
             e.printStackTrace();
         }
     }
-
-
 }
