@@ -141,7 +141,7 @@ String cons ="update delete /empleados/zonas/zona[cod_zona=50]"; result3= servic
 result= servicio.query(cons);
 
  */
-package accesodatos;
+package accesodatos.AD_Existsdb_01;
 
 import java.io.File;
 import java.net.URISyntaxException;
@@ -159,7 +159,7 @@ import org.xmldb.api.modules.XPathQueryService;
 /**
  * Hello world!
  */
-public class App {
+public class Main1 {
 
     public static String driver = "org.exist.xmldb.DatabaseImpl";
     public static String user = "admin";
@@ -184,6 +184,8 @@ public class App {
             //pruba crear y eliminar collection
             mgtService.createCollection("testtodelete");
             mgtService.removeCollection("testtodelete");
+
+            //limpiamos la collection test para recrearla y usarla
             mgtService.removeCollection("test");
 
             //4 listamos las collections existentes
@@ -205,9 +207,9 @@ public class App {
             //obj collectiion que vamos a utilizar
             Collection testcol = DatabaseManager.getCollection(uri + coleccion + "/test", user, pass);
 
-            File empleadosxml = new File(App.class.getResource("/xml/empleados.xml").toURI());
-            File proba1xml = new File(App.class.getResource("/xml/proba.xml").toURI());
-            File proba2xml = new File(App.class.getResource("/xml/proba2.xml").toURI());
+            File empleadosxml = new File(Main1.class.getResource("/xml/empleados.xml").toURI());
+            File proba1xml = new File(Main1.class.getResource("/xml/proba.xml").toURI());
+            File proba2xml = new File(Main1.class.getResource("/xml/proba2.xml").toURI());
 
             //recurso correspondiente a empleados.xml
             Resource empleadosx = testcol.createResource(empleadosxml.getName(), "XMLResource");
