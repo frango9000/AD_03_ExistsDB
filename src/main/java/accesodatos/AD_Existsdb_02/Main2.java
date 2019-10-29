@@ -46,21 +46,21 @@ public class Main2 {
             String delete4 = "update delete /EMPLEADOS/EMP_ROW[EMP_NO=7698]";
             service.query(delete4);
 
-            //5 TODO
-            String update5 = "update value /PLAY/PERSONA";
+            //5
+            String update5 = "update value /PLAY/PERSONAE/PERSONA[ . ='pedro'] with 'xoan'";
             service.queryResource("proba2.xml", update5);
 
-            //6 TODO
-            String update6 = "update value /PLAY/PERSONA";
-            service.queryResource("proba2.xml", update6);
+            //6
+            String update6 = "update value /PLAY/PERSONAE/PERSONA[ . ='luis'] with 'xulio'";
+            service.queryResource("proba.xml", update6);
 
-            //7 TODO
-            String update7 = "update value /PLAY/PERSONA";
+            //7
+            String update7 = "update value /PLAY/PERSONAE/PERSONA[ . ='xoan'] with 'sara'";
             service.query(update7);
-
-            //8 TODO
-            String update8 = "update value /PLAY/PERSONA";
-            service.queryResource("proba.xml", update8);
+//
+//            //8 TODO
+//            String update8 = "update value /PLAY/PERSONA";
+//            service.queryResource("proba.xml", update8);
 
         } catch (XMLDBException e) {
             e.printStackTrace();
