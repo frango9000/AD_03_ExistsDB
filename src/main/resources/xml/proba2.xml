@@ -1,4 +1,8 @@
 <PLAY>
+  <PERSONAE>
+    <PERSONA>pedro</PERSONA>
+    <PERSONA>luis</PERSONA>
+  </PERSONAE>
   <fm>
     <p id="1">ola</p>
     <p id="2">
@@ -6,8 +10,4 @@
       <nome>eva</nome>
     </p>
   </fm>
-  <PERSONAE>
-    <PERSONA>pedro</PERSONA>
-    <PERSONA>luis</PERSONA>
-  </PERSONAE>
 </PLAY>

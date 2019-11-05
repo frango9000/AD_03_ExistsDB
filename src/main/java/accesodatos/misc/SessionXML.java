@@ -8,11 +8,10 @@ import org.xmldb.api.base.XMLDBException;
 public class SessionXML {
 
 
+    private static SessionXML sessionXML = null;
     private String driver = "org.exist.xmldb.DatabaseImpl";
     private String user = "admin";
     private String pass = "castelao";
-
-    private static SessionXML sessionXML = null;
 
     private SessionXML() {
     }
@@ -21,6 +20,30 @@ public class SessionXML {
         if (sessionXML == null)
             sessionXML = new SessionXML();
         return sessionXML;
+    }
+
+    public String getDriver() {
+        return driver;
+    }
+
+    public void setDriver(String driver) {
+        this.driver = driver;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
     public Collection getCollection(String colectionName) {

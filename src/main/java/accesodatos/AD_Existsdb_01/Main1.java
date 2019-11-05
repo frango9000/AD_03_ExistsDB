@@ -147,10 +147,7 @@ import accesodatos.misc.SessionXML;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.util.Arrays;
-import org.hsqldb.Session;
-import org.xmldb.api.DatabaseManager;
 import org.xmldb.api.base.Collection;
-import org.xmldb.api.base.Database;
 import org.xmldb.api.base.Resource;
 import org.xmldb.api.base.ResourceIterator;
 import org.xmldb.api.base.ResourceSet;
@@ -162,6 +159,7 @@ import org.xmldb.api.modules.XPathQueryService;
  * Hello world!
  */
 public class Main1 {
+
     public static void main(String[] args) {
         SessionXML sessionXML = SessionXML.getSessionXML();
         try {

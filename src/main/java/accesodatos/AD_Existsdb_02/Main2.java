@@ -19,6 +19,7 @@ package accesodatos.AD_Existsdb_02;
 import accesodatos.AD_Existsdb_01.Main1;
 import accesodatos.misc.SessionXML;
 import org.xmldb.api.base.Collection;
+import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
 import org.xmldb.api.modules.XPathQueryService;
 
@@ -57,10 +58,10 @@ public class Main2 {
             //7
             String update7 = "update value /PLAY/PERSONAE/PERSONA[ . ='xoan'] with 'sara'";
             service.query(update7);
-//
-//            //8 TODO
-//            String update8 = "update value /PLAY/PERSONA";
-//            service.queryResource("proba.xml", update8);
+
+            //8
+            String update8 = "update value /PLAY/fm/p[@id=2]/nome[ . ='ana'] with 'xulia'";
+            ResourceSet resourceSet = service.queryResource("proba.xml", update8);
 
         } catch (XMLDBException e) {
             e.printStackTrace();
