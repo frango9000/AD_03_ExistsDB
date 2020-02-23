@@ -1,0 +1,60 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww16200\viewh13200\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs36 \cf0 \
+Exists\
+\
+E una base de datos documental ( permite manipular documentos como items) nativa XML . \
+E decir permite almacenar , borrar , consultar e modificar documentos XML.\
+\
+Ten interfaces propias para poder facer estas operacions usando a linguaxe Xpath ou Xquery pero o que nos interesa e poder facer todas as operacions mencionadas anteriormente dende Java.\
+\
+Para poder acceder dende java temos unha API standard que nos permite conectar a bases nativas XML ,  ch\'e1mase XMLDB\
+\
+neste exercicio tratase de facer todo dende o principio:\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 0)	o primeiro que debemos facer e comprobar que as versions da maquina virtual java e o o entrono de jecucion te\'f1en a mesma version\
+java -version\
+javac -version\
+\
+si saen os seguintes mensaxes debemos facer cambios posi as versions son distintas  (1.8 unha e 1.7 a outra):\
+[root@localhost ~]# java -version\
+openjdk version "1.8.0_171"\
+OpenJDK Runtime Environment (build 1.8.0_171-b10)\
+OpenJDK 64-Bit Server VM (build 25.171-b10, mixed mode)\
+[root@localhost ~]# javac -version\
+javac 1.7.0_181\
+\
+o que temos que facer e instalar o paquete java-1.8.0-openjdk-devel.x86_64 mediante a seguinte orde lanzada como root:\
+\
+yum install java-1.8.0-openjdk-devel.x86_64\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \
+\
+\
+\
+\
+1) instalar Exist \
+	a) enlace para descarga : http://exist-db.org/exist/apps/homepage/index.html\
+		descargar a ultima version estable ( a 26/11/2018 e a 4.5.0): deberia ser o jar : \
+		eXist-db-setup-4.5.0.jar\
+		\
+	b) instalacion: \
+		dende consola de linux : \
+		java -jar   eXist-db-setup-4.5.0.jar\
+\
+		isto fara que se instalen varios programa para controlar Exists entre eles un administrador  cliente que ,e permite aceder as collecions da base e administrala. Para familiarizarnos co entorno podemos crear e borrar algunha colecion e subir algun documento .xml\
+\
+2) crear proxecto java:\
+\
+	 incluir as librerias de exists:  \
+		exists.jar\
+		/lib/core/ (todos los .jar que hai nesta ruta)\
+\
+}
